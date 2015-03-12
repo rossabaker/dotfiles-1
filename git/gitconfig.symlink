@@ -4,7 +4,7 @@
 [hub]
         protocol = https
 [user]
-        name = rossabaker
+        name = Ross A. Baker
         email = ross@rossabaker.com
 [credential]
         helper = cache
@@ -21,7 +21,7 @@
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
+	excludesfile = /home/ross/.gitignore
         editor = vim
 [apply]
         whitespace = nowarn
