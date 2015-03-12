@@ -1,0 +1,23 @@
+Config { font = "xft:DejaVu Sans Mono:pixelsize=14"
+       , allDesktops = True
+       , borderColor = "black"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , lowerOnStart = True
+       , overrideRedirect = False
+       , persistent = False
+       , hideOnStart = False
+       , commands = [ Run Weather "KIND" ["-t","<skyCondition> <tempF>°F","-L","40","-H","80","--normal","green","--high","red","--low","lightblue"] 9000
+                    , Run Network "eth0" ["-t","eth0: <tx> <rx>","-L","8","-H","32","-l","green","-n","orange","-h","red","-m","7","-S","True"] 10
+                    , Run Network "wlan0" ["-t","wlan0: <tx> <rx>","-L","8","-H","32","-l","green","-n","orange","-h","red","-m","7","-S","True"] 10
+                    , Run Cpu ["-L","3","-H","50","-l","green","-n","orange","-h","red","-p","2"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%","-L","20","-H","80","-l","green","-n","orange","-h","red"] 10
+    		    , Run Date "%a %b %_d %H:%M:%S" "date" 10
+                    , Run Battery ["-t","<acstatus>","--","-O","  On","-i","Idle","-o","<timeleft>"] 100
+                    , Run DiskU [("/", "root <usedp>%"),("/home","home <usedp>%")] ["-L","20","-H","80","-p","2","-l","green","-n","orange","-h","red"] 100
+                    , Run Com "/home/ross/.xmobar/vpnc" [] "vpnc" 100
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%battery% | %cpu% | %memory% | %disku% | %eth0% %wlan0% %vpnc% }{ %KIND% | <fc=orange>%date%</fc>"
+       }
