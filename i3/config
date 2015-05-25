@@ -26,6 +26,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
+# start a Chrome window
+bindsym $mod+n exec google-chrome
+bindsym $mod+Shift+n exec google-chrome --incognito
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
