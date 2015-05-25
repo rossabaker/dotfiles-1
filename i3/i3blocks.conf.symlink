@@ -24,11 +24,10 @@
 separator_block_width=15
 
 [nowplaying]
-label=
-command=~/share/i3blocks/now_playing
+command=spotify-control statusbar
 interval=5
 color=#00ff00
-align=left
+separator=false
 
 [volume]
 label=
@@ -36,19 +35,12 @@ instance=Master
 command=/usr/share/i3blocks/volume 5% pulse
 interval=once
 color=#00ff00
-signal=10
+signal=4
 
 [disk-home]
 instance=$HOME
 command=/usr/share/i3blocks/disk
 interval=30
-
-[External IP]
-label=
-command=curl ifconfig.me/ip
-color=#00FF00
-interval=6000
-separator=false
 
 [wireless]
 label=

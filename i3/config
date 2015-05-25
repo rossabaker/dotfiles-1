@@ -18,7 +18,7 @@ set $mod Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:DejaVu Sans Mono 11
+font pango:DejaVu Sans 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -30,7 +30,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -fn 'DejaVu Sans Mono:bold:pixelsize=16'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -147,12 +147,21 @@ bindsym $mod+x move workspace to output right
 
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
+bindsym XF86AudioMute exec env BLOCK_BUTTON=3 /usr/share/i3blocks/volume 3% pulse && pkill -RTMIN+4 i3blocks
+bindsym XF86AudioRaiseVolume exec env BLOCK_BUTTON=4 /usr/share/i3blocks/volume 3% pulse && pkill -RTMIN+4 i3blocks 
+bindsym XF86AudioLowerVolume exec env BLOCK_BUTTON=5 /usr/share/i3blocks/volume 3% pulse && pkill -RTMIN+4 i3blocks 
+
+bindsym XF86AudioPrev exec ~/bin/spotify-control prev && pkill -RTMIN+4 i3blocks
+bindsym XF86AudioNext exec ~/bin/spotify-control next && pkill -RTMIN+4 i3blocks
+bindsym XF86AudioPlay exec ~/bin/spotify-control play && pkill -RTMIN+4 i3blocks 
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks
+        status_command i3blocks ~/.i3blocks.conf
 	position top
 	tray_output primary
-	font pango: DejaVu Sans Mono, FontAwesome, Segoe UI Symbol 12
+	font pango: DejaVu Sans Mono, FontAwesome, Segoe UI Symbol 11
 }
 
+for_window [class="^Google-chrome$"] border none
